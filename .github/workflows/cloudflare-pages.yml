@@ -22,3 +22,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name=aura
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+# Pages project created; trigger deployment
