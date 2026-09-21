@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Deploy
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: aura
-          directory: .
+          command: pages deploy . --project-name=aura
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
