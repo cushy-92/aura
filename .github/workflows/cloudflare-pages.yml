@@ -1,4 +1,4 @@
-name: Deploy Aura to Cloudflare Pages
+name: Deploy Aura to Cloudflare Worker
 
 on:
   push:
@@ -15,12 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Deploy
+      - name: Deploy Worker
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=aura
+          command: deploy
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-# Pages project created; trigger deployment
